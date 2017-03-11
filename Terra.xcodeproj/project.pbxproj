@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1743A8781E74562A00259B2B /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743A8771E74562A00259B2B /* UserViewController.swift */; };
+		1743A87A1E74566F00259B2B /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743A8791E74566F00259B2B /* WikiViewController.swift */; };
 		966946451E744E2200D3FFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946441E744E2200D3FFAC /* AppDelegate.swift */; };
-		966946471E744E2200D3FFAC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946461E744E2200D3FFAC /* FirstViewController.swift */; };
-		966946491E744E2200D3FFAC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946481E744E2200D3FFAC /* SecondViewController.swift */; };
+		966946471E744E2200D3FFAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946461E744E2200D3FFAC /* MapViewController.swift */; };
+		966946491E744E2200D3FFAC /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946481E744E2200D3FFAC /* QRViewController.swift */; };
 		9669464C1E744E2300D3FFAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9669464A1E744E2300D3FFAC /* Main.storyboard */; };
 		9669464E1E744E2300D3FFAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9669464D1E744E2300D3FFAC /* Assets.xcassets */; };
 		966946511E744E2400D3FFAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9669464F1E744E2400D3FFAC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1743A8771E74562A00259B2B /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		1743A8791E74566F00259B2B /* WikiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
 		966946411E744E2200D3FFAC /* Terra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Terra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966946441E744E2200D3FFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		966946461E744E2200D3FFAC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		966946481E744E2200D3FFAC /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		966946461E744E2200D3FFAC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		966946481E744E2200D3FFAC /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		9669464B1E744E2300D3FFAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9669464D1E744E2300D3FFAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		966946501E744E2400D3FFAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,8 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				966946441E744E2200D3FFAC /* AppDelegate.swift */,
-				966946461E744E2200D3FFAC /* FirstViewController.swift */,
-				966946481E744E2200D3FFAC /* SecondViewController.swift */,
+				966946461E744E2200D3FFAC /* MapViewController.swift */,
+				966946481E744E2200D3FFAC /* QRViewController.swift */,
+				1743A8771E74562A00259B2B /* UserViewController.swift */,
+				1743A8791E74566F00259B2B /* WikiViewController.swift */,
 				9669464A1E744E2300D3FFAC /* Main.storyboard */,
 				9669464D1E744E2300D3FFAC /* Assets.xcassets */,
 				9669464F1E744E2400D3FFAC /* LaunchScreen.storyboard */,
@@ -139,9 +145,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966946491E744E2200D3FFAC /* SecondViewController.swift in Sources */,
+				966946491E744E2200D3FFAC /* QRViewController.swift in Sources */,
+				1743A8781E74562A00259B2B /* UserViewController.swift in Sources */,
 				966946451E744E2200D3FFAC /* AppDelegate.swift in Sources */,
-				966946471E744E2200D3FFAC /* FirstViewController.swift in Sources */,
+				1743A87A1E74566F00259B2B /* WikiViewController.swift in Sources */,
+				966946471E744E2200D3FFAC /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +270,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Terra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.plguo.Terra;
@@ -274,6 +283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Terra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.plguo.Terra;
@@ -301,6 +311,7 @@
 				966946571E744E2400D3FFAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

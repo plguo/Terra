@@ -1,18 +1,19 @@
 //
-//  FirstViewController.swift
+//  UserViewController.swift
 //  Terra
 //
-//  Created by Edward Guo on 2017-03-11.
+//  Created by Udeshaya Wadhwa on 2017-03-11.
 //  Copyright © 2017 Terra Inc. All rights reserved.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class UserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +21,4 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-
