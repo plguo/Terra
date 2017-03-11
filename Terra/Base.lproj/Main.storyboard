@@ -90,6 +90,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="userImage" id="QVU-Vr-rGb"/>
+
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGH-hp-FPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,6 +110,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Wiki" image="infoImage" id="3qR-j3-ybf"/>
+
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hX7-4j-cRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
