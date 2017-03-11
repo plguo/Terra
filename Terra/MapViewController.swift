@@ -25,6 +25,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
 

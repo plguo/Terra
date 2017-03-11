@@ -48,7 +48,7 @@
                             <constraint firstItem="t2g-0I-fQg" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ZNY-gT-Xlw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="MAP" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="mapImage" selectedImage="mapImage" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="map" destination="uaB-zs-Ppp" id="HMo-ib-jkg"/>
                     </connections>
@@ -70,7 +70,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Scan" image="cameraImage" selectedImage="cameraImage" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,7 +89,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="QVU-Vr-rGb"/>
+                    <tabBarItem key="tabBarItem" title="User" image="userImage" id="QVU-Vr-rGb"/>
+
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGH-hp-FPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,7 +109,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="3qR-j3-ybf"/>
+                    <tabBarItem key="tabBarItem" title="Wiki" image="infoImage" id="3qR-j3-ybf"/>
+
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hX7-4j-cRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +139,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="cameraImage" width="24" height="24"/>
+        <image name="infoImage" width="24" height="24"/>
+        <image name="mapImage" width="24" height="24"/>
+        <image name="userImage" width="24" height="24"/>
     </resources>
 </document>
