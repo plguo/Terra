@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--User View Controller-->
+        <!--Wiki View Controller-->
         <scene sceneID="qT2-mI-XOG">
             <objects>
-                <viewController title="User View Controller" id="AZx-9a-9AX" customClass="UserViewController" customModule="Terra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Wiki View Controller" id="AZx-9a-9AX" customClass="WikiViewController" customModule="Terra" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ick-a2-hWU"/>
                         <viewControllerLayoutGuide type="bottom" id="6Ml-ZQ-Fz6"/>
@@ -89,17 +89,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="User" image="userImage" id="QVU-Vr-rGb"/>
-
+                    <tabBarItem key="tabBarItem" title="Wiki" image="infoImage" selectedImage="infoImage" id="QVU-Vr-rGb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGH-hp-FPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1418" y="-321"/>
         </scene>
-        <!--Wiki View Controller-->
+        <!--User View Controller-->
         <scene sceneID="ZUg-UG-pUj">
             <objects>
-                <viewController title="Wiki View Controller" id="bKo-se-wcm" sceneMemberID="viewController">
+                <viewController title="User View Controller" id="bKo-se-wcm" customClass="UserViewController" customModule="Terra" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aP3-vu-4ad"/>
                         <viewControllerLayoutGuide type="bottom" id="r43-TH-tRx"/>
@@ -109,8 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wiki" image="infoImage" id="3qR-j3-ybf"/>
-
+                    <tabBarItem key="tabBarItem" title="User" image="userImage" selectedImage="userImage" id="3qR-j3-ybf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hX7-4j-cRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

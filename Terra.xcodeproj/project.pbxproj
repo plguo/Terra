@@ -132,6 +132,7 @@
 				TargetAttributes = {
 					966946401E744E1E00D3FFAC = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 59WRPHFTBH;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -346,7 +347,8 @@
 			baseConfigurationReference = 48700A9F77141DD0EC6A1CFF /* Pods-Terra.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = launchImage;
+				DEVELOPMENT_TEAM = 59WRPHFTBH;
 				INFOPLIST_FILE = Terra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.plguo.Terra;
@@ -360,7 +362,8 @@
 			baseConfigurationReference = DE942A6407B3305F322AA267 /* Pods-Terra.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = launchImage;
+				DEVELOPMENT_TEAM = 59WRPHFTBH;
 				INFOPLIST_FILE = Terra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.plguo.Terra;
