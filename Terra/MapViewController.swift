@@ -39,7 +39,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         var trashAnnotation = MKPointAnnotation()
         
-        var location = CLLocationCoordinate2D(latitude: 43.5, longitude: -80.5)
+        var location = CLLocationCoordinate2D(latitude: 43.47055, longitude: -80.54388)
         
         trashAnnotation.coordinate = location
         
@@ -57,13 +57,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        
         return true
+        
     }
-
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if (trackLocation) {
+            
             let userLocation: CLLocation = locations[0]
             
             let latitude = userLocation.coordinate.latitude
@@ -81,9 +83,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let region = MKCoordinateRegion(center: location, span: span)
             
             if (firstLocationUpdate) {
+                
                 firstLocationUpdate = false
+                
                 self.map.setRegion(region, animated: false)
+                
             } else {
+                
                 self.map.setRegion(region, animated: true)
             }
             
@@ -100,9 +106,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func didDragMap(_ gestureRecognizer: UIGestureRecognizer) {
+        
         trackLocation = false
         
         locationButton.setImage(UIImage(named: "panMode.png"), for: UIControlState.normal)
+        
     }
     
     override func didReceiveMemoryWarning() {

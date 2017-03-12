@@ -44,8 +44,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-KM-6DN">
                                 <rect key="frame" x="24" y="582" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="GGg-Zd-ben"/>
-                                    <constraint firstAttribute="height" constant="40" id="i2F-zi-bMY"/>
+                                    <constraint firstAttribute="height" constant="24" id="e8J-nZ-NtM"/>
+                                    <constraint firstAttribute="width" constant="24" id="tB0-aL-JGi"/>
                                 </constraints>
                                 <state key="normal" image="myLocation"/>
                                 <connections>
