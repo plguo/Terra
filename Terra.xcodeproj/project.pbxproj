@@ -10,6 +10,7 @@
 		1743A8781E74562A00259B2B /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743A8771E74562A00259B2B /* UserViewController.swift */; };
 		1743A87A1E74566F00259B2B /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743A8791E74566F00259B2B /* WikiViewController.swift */; };
 		20B91F6611D1E79F047A6BDF /* Pods_Terra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7EA88B57027946569EF1D /* Pods_Terra.framework */; };
+		6167A7161E74DA8C006FC8B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6167A7151E74DA8C006FC8B0 /* GoogleService-Info.plist */; };
 		966946451E744E2200D3FFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946441E744E2200D3FFAC /* AppDelegate.swift */; };
 		966946471E744E2200D3FFAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946461E744E2200D3FFAC /* MapViewController.swift */; };
 		966946491E744E2200D3FFAC /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946481E744E2200D3FFAC /* QRViewController.swift */; };
@@ -22,6 +23,7 @@
 		1743A8771E74562A00259B2B /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		1743A8791E74566F00259B2B /* WikiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
 		48700A9F77141DD0EC6A1CFF /* Pods-Terra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Terra.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Terra/Pods-Terra.debug.xcconfig"; sourceTree = "<group>"; };
+		6167A7151E74DA8C006FC8B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		966946411E744E2200D3FFAC /* Terra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Terra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966946441E744E2200D3FFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966946461E744E2200D3FFAC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				9669464A1E744E2300D3FFAC /* Main.storyboard */,
 				9669464D1E744E2300D3FFAC /* Assets.xcassets */,
 				9669464F1E744E2400D3FFAC /* LaunchScreen.storyboard */,
+				6167A7151E74DA8C006FC8B0 /* GoogleService-Info.plist */,
 				966946521E744E2400D3FFAC /* Info.plist */,
 			);
 			path = Terra;
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				966946511E744E2400D3FFAC /* LaunchScreen.storyboard in Resources */,
+				6167A7161E74DA8C006FC8B0 /* GoogleService-Info.plist in Resources */,
 				9669464E1E744E2300D3FFAC /* Assets.xcassets in Resources */,
 				9669464C1E744E2300D3FFAC /* Main.storyboard in Resources */,
 			);
