@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8rJ-Kc-sve">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8rJ-Kc-sve">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -42,7 +42,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-KM-6DN">
-                                <rect key="frame" x="24" y="598" width="24" height="24"/>
+                                <rect key="frame" x="46" y="603" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="e8J-nZ-NtM"/>
                                     <constraint firstAttribute="width" constant="24" id="tB0-aL-JGi"/>
@@ -60,10 +60,10 @@
                             <constraint firstItem="uaB-zs-Ppp" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Grz-pW-UOT"/>
                             <constraint firstAttribute="trailing" secondItem="uaB-zs-Ppp" secondAttribute="trailing" id="LBV-Ao-8wS"/>
                             <constraint firstItem="fGy-l4-iX6" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="YQs-i3-DVZ"/>
-                            <constraint firstItem="eR6-KM-6DN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="303" id="kKS-2D-ofW"/>
+                            <constraint firstItem="eR6-KM-6DN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="30" id="kKS-2D-ofW"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="uaB-zs-Ppp" secondAttribute="bottom" id="lo1-8j-vwF"/>
                             <constraint firstItem="fGy-l4-iX6" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="pOJ-E7-6RW"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="eR6-KM-6DN" secondAttribute="bottom" constant="548" id="qE8-Re-G3t"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="eR6-KM-6DN" secondAttribute="bottom" constant="40" id="qE8-Re-G3t"/>
                             <constraint firstAttribute="trailing" secondItem="fGy-l4-iX6" secondAttribute="trailing" id="zkR-Wk-Peg"/>
                         </constraints>
                     </view>

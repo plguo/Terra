@@ -43,7 +43,7 @@ class ClassifyWaste {
         
         let region = region0.lowercased()
         let regionUrl = "https://raw.githubusercontent.com/plguo/Terra-Recycle-Wiki/master/regions/" + region + ".md"
-        Alamofire.request(regionUrl).responseString { [weak self] (response) in
+        Alamofire.request(regionUrl).responseString { (response) in
             if (response.result.isSuccess) {
                 let lines = (response.result.value! as NSString).components(separatedBy: "\n")
                 

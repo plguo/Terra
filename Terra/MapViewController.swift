@@ -57,6 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         navbar.delegate = self
       
         self.navbar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!]
+        navbar.topItem?.title = targetType.capitalized
 
         locationManager.delegate = self
 

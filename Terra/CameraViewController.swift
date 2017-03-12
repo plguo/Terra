@@ -22,6 +22,8 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     let stillImageOutput = AVCaptureStillImageOutput()
     var uploader : ImageUploader?
     
+    var binType : String?
+    
     let wiki = TerraWiki()
     let binWiki = ClassifyWaste()
     
@@ -168,6 +170,8 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         captureButton.isHidden = true
         blurView!.isHidden = true
         
+        self.binType = nil
+        
         stillImageOutput.captureStillImageAsynchronously(from: stillImageOutput.connection(withMediaType: AVMediaTypeVideo), completionHandler: {[weak self] (imageDataSampleBuffer, error) -> Void in
             if (imageDataSampleBuffer != nil && error == nil) {
                 let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer!) as NSData
@@ -176,6 +180,15 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                 }
             }
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segue-to-map") {
+            let controller = segue.destination as! MapViewController
+            let bType = self.binType ?? "garbage"
+            controller.targetType = bType
+            controller.title = bType.capitalized
+        }
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -204,6 +217,8 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             
             let binType = binType0 == "undefined" ? "garbage" : binType0
             self?.messageLabel.text = "\(productName) / \(binType)"
+            
+            self?.binType = binType
             
             self?.blurView.isHidden = false
             self?.activityIndicator.stopAnimating()
