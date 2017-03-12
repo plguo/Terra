@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-KM-6DN">
-                                <rect key="frame" x="319" y="619" width="40" height="40"/>
+                                <rect key="frame" x="24" y="582" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="GGg-Zd-ben"/>
                                     <constraint firstAttribute="height" constant="40" id="i2F-zi-bMY"/>
@@ -50,17 +50,31 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="PLT-PY-k50"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDJ-nD-Y0R">
+                                <rect key="frame" x="279" y="562" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.61176470589999998" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Amr-nK-gbM"/>
+                                    <constraint firstAttribute="width" constant="60" id="YhL-S3-YyR"/>
+                                </constraints>
+                                <state key="normal" title="CAM"/>
+                                <connections>
+                                    <segue destination="4mV-vE-ccN" kind="unwind" unwindAction="unwindToCameraWithUnwindSegue:" id="raI-b7-Ssq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="xDJ-nD-Y0R" secondAttribute="bottom" constant="45" id="9It-MV-Y8z"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="uaB-zs-Ppp" secondAttribute="bottom" id="AcK-5i-QRC"/>
                             <constraint firstItem="uaB-zs-Ppp" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Grz-pW-UOT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xDJ-nD-Y0R" secondAttribute="trailing" constant="20" id="Jod-KT-9Gh"/>
                             <constraint firstItem="uaB-zs-Ppp" firstAttribute="top" secondItem="t2g-0I-fQg" secondAttribute="bottom" constant="8" id="KDa-ho-Azq"/>
                             <constraint firstAttribute="trailing" secondItem="uaB-zs-Ppp" secondAttribute="trailing" id="LBV-Ao-8wS"/>
                             <constraint firstItem="t2g-0I-fQg" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="VP1-nG-Hju"/>
                             <constraint firstItem="t2g-0I-fQg" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ZNY-gT-Xlw"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="eR6-KM-6DN" secondAttribute="bottom" constant="8" id="qE8-Re-G3t"/>
-                            <constraint firstItem="eR6-KM-6DN" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="sYL-uF-UCv"/>
+                            <constraint firstItem="eR6-KM-6DN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="8" id="kKS-2D-ofW"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="eR6-KM-6DN" secondAttribute="bottom" constant="45" id="qE8-Re-G3t"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="mapImage" selectedImage="mapImage" id="acW-dT-cKf"/>
@@ -70,6 +84,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <exit id="4mV-vE-ccN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="382" y="-322"/>
         </scene>
@@ -85,12 +100,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6L2-CD-4d6">
-                                <rect key="frame" x="36" y="40" width="303" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKn-o1-QzB">
                                 <rect key="frame" x="157" y="562" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.61176470589999998" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -99,6 +108,9 @@
                                     <constraint firstAttribute="width" constant="60" id="Us0-ql-oLc"/>
                                 </constraints>
                                 <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="classifyGarbage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="08V-VS-W4k"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I64-du-Hgr">
                                 <rect key="frame" x="36" y="562" width="60" height="60"/>
@@ -109,26 +121,26 @@
                                 </constraints>
                                 <state key="normal" title="MAP"/>
                                 <connections>
-                                    <segue destination="9pv-A4-QxB" kind="popoverPresentation" popoverAnchorView="I64-du-Hgr" id="k0C-nI-ri4">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="9pv-A4-QxB" kind="showDetail" action="showViewController:sender:" id="k0C-nI-ri4"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="I2O-Sj-qvM">
+                                <rect key="frame" x="169" y="574" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MKn-o1-QzB" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="81I-14-eXt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6L2-CD-4d6" secondAttribute="trailing" constant="20" id="IWG-4f-ajS"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="MKn-o1-QzB" secondAttribute="bottom" constant="45" id="JQE-7i-jHd"/>
-                            <constraint firstItem="6L2-CD-4d6" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="20" id="ask-Lb-CuM"/>
-                            <constraint firstItem="6L2-CD-4d6" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="fB6-6F-uoB"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="I64-du-Hgr" secondAttribute="bottom" constant="45" id="ixg-yf-jei"/>
                             <constraint firstItem="I64-du-Hgr" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="20" id="rn4-kW-Qq4"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Scan" image="cameraImage" selectedImage="cameraImage" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="messageLabel" destination="6L2-CD-4d6" id="HvK-ua-Hlm"/>
+                        <outlet property="activityIndicator" destination="I2O-Sj-qvM" id="IYR-jf-Svc"/>
+                        <outlet property="captureButton" destination="MKn-o1-QzB" id="MhP-kj-rie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

@@ -9,14 +9,22 @@
 import UIKit
 import AVFoundation
 
-class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ImageUploaderDelegate {
     
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var cameraView:UIView?
     
-    @IBOutlet weak var messageLabel: UILabel!
+    var messageLabel: UILabel!
+    var blurView: UIView!
+    
+    let stillImageOutput = AVCaptureStillImageOutput()
+    var uploader : ImageUploader?
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var captureButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +33,39 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         
         startCameraSession()
         addQrCodeFrameView()
-        view.bringSubview(toFront: messageLabel)
+        
+        blurView = UIView()
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+        blurView.layer.cornerRadius = 10.0
+        
+        messageLabel = UILabel()
+        messageLabel.text = "Hello"
+        messageLabel.font = UIFont.systemFont(ofSize: 20)
+        messageLabel.textColor = UIColor.black
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        blurView.addSubview(messageLabel!)
+        
+        let labelVerticalConstraint = NSLayoutConstraint(item: messageLabel!, attribute: .centerX, relatedBy: .equal, toItem: blurView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        let labelHorizontalConstraint = NSLayoutConstraint(item: messageLabel!, attribute: .centerY, relatedBy: .equal, toItem: blurView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+        
+        blurView.addConstraint(labelVerticalConstraint)
+        blurView.addConstraint(labelHorizontalConstraint)
+        
+        view.addSubview(blurView)
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[blur(==50)]", options: [], metrics: nil, views: ["blur" : blurView])
+        let horizontalContraint = NSLayoutConstraint(item: blurView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        let centerConstraint = NSLayoutConstraint(item: blurView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        view.addConstraints(verticalConstraints)
+        view.addConstraint(horizontalContraint)
+        view.addConstraint(centerConstraint)
+        
+        uploader = ImageUploader()
+        uploader!.delegate = self
+        
+        blurView.isHidden = true
+        activityIndicator.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,6 +86,11 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             
             // Set the input device on the capture session.
             captureSession?.addInput(input)
+            
+            self.stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+            if captureSession!.canAddOutput(self.stillImageOutput) {
+                captureSession!.addOutput(self.stillImageOutput)
+            }
             
             // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
             let captureMetadataOutput = AVCaptureMetadataOutput()
@@ -94,7 +139,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No QR code is detected"
+            messageLabel!.text = "No QR code is detected"
             return
         }
         
@@ -107,14 +152,45 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                messageLabel.text = metadataObj.stringValue
+                messageLabel!.text = metadataObj.stringValue
             }
         }
+    }
+    
+    @IBAction func classifyGarbage(_ sender: UIButton) {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden  = false
+        captureButton.isHidden = true
+        blurView!.isHidden = true
+        
+        stillImageOutput.captureStillImageAsynchronously(from: stillImageOutput.connection(withMediaType: AVMediaTypeVideo), completionHandler: {[weak self] (imageDataSampleBuffer, error) -> Void in
+            if (imageDataSampleBuffer != nil && error == nil) {
+                let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer!) as NSData
+                if let image: UIImage = UIImage(data: imageData as Data){
+                    self?.uploader?.uploadImage(image)
+                }
+            }
+        })
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         get {
             return .lightContent
         }
+    }
+    
+    func identifiedLables(_ lables: [LabelInfo]) {
+        if (lables.count > 0) {
+            blurView!.isHidden = false
+            messageLabel!.text = lables[0].name
+        }
+        
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden  = true
+        captureButton.isHidden = false
+    }
+    
+    @IBAction func unwindToCamera(unwindSegue: UIStoryboardSegue) {
+        // Some code
     }
 }
