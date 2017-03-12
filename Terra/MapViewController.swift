@@ -47,8 +47,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didDragMap))
         panGestureRecognizer?.delegate = self
         map.addGestureRecognizer(panGestureRecognizer!)
-        
-        
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
