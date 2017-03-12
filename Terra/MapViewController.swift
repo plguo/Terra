@@ -55,6 +55,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
     
         navbar.delegate = self
+      
+        self.navbar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!]
 
         locationManager.delegate = self
 
@@ -63,7 +65,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.requestWhenInUseAuthorization()
 
         locationManager.startUpdatingLocation()
-
+      
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didDragMap))
 
         panGestureRecognizer?.delegate = self

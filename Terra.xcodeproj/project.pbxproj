@@ -13,6 +13,7 @@
 		6167A7161E74DA8C006FC8B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6167A7151E74DA8C006FC8B0 /* GoogleService-Info.plist */; };
 		6167A7181E74DDEF006FC8B0 /* PictureUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6167A7171E74DDEF006FC8B0 /* PictureUpload.swift */; };
 		6167A71A1E74F4F2006FC8B0 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6167A7191E74F4F2006FC8B0 /* secrets.swift */; };
+		617AFA8A1E75B355005627B8 /* ClassifyWaste.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617AFA891E75B355005627B8 /* ClassifyWaste.swift */; };
 		9613ED821E75875900BD20AF /* TerraWiki.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613ED811E75875900BD20AF /* TerraWiki.swift */; };
 		965F44D11E757879001EBF0C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F44D01E757879001EBF0C /* UserViewController.swift */; };
 		966946451E744E2200D3FFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966946441E744E2200D3FFAC /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 		6167A7151E74DA8C006FC8B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6167A7171E74DDEF006FC8B0 /* PictureUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureUpload.swift; sourceTree = "<group>"; };
 		6167A7191E74F4F2006FC8B0 /* secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
+		617AFA891E75B355005627B8 /* ClassifyWaste.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifyWaste.swift; sourceTree = "<group>"; };
 		9613ED811E75875900BD20AF /* TerraWiki.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerraWiki.swift; sourceTree = "<group>"; };
 		965F44D01E757879001EBF0C /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		966946411E744E2200D3FFAC /* Terra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Terra.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 				6167A7191E74F4F2006FC8B0 /* secrets.swift */,
 				6167A7171E74DDEF006FC8B0 /* PictureUpload.swift */,
 				9613ED811E75875900BD20AF /* TerraWiki.swift */,
+				617AFA891E75B355005627B8 /* ClassifyWaste.swift */,
 				966946441E744E2200D3FFAC /* AppDelegate.swift */,
 				966946461E744E2200D3FFAC /* MapViewController.swift */,
 				966946481E744E2200D3FFAC /* CameraViewController.swift */,
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				617AFA8A1E75B355005627B8 /* ClassifyWaste.swift in Sources */,
 				966946491E744E2200D3FFAC /* CameraViewController.swift in Sources */,
 				965F44D11E757879001EBF0C /* UserViewController.swift in Sources */,
 				6167A71A1E74F4F2006FC8B0 /* secrets.swift in Sources */,
