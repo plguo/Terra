@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ImageUploaderDelegate {
+class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ImageUploaderDelegate {
     
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?

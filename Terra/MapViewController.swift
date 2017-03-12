@@ -9,10 +9,12 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, UINavigationBarDelegate {
 
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var locationButton: UIButton!
+    
+    @IBOutlet weak var navbar: UINavigationBar!
     
     var locationManager = CLLocationManager()
     
@@ -47,6 +49,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didDragMap))
         panGestureRecognizer?.delegate = self
         map.addGestureRecognizer(panGestureRecognizer!)
+        
+        navbar.delegate = self
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -101,6 +105,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }
 
