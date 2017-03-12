@@ -2,7 +2,7 @@
 //  QRViewController.swift
 //  Terra
 //
-//  Created by Edward Guo on 2017-03-11.
+//  Created by Terra Team on 2017-03-11.
 //  Copyright © 2017 Terra Inc. All rights reserved.
 //
 
