@@ -21,7 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     var locationManager = CLLocationManager()
 
-    var userLocation: CLLocation!
+    var userLocation: CLLocation?
 
     var panGestureRecognizer: UIPanGestureRecognizer?
 
@@ -44,10 +44,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var other: CustomPointAnnotation!
 
     var otherView: MKPinAnnotationView!
+    
+    var firstUpdate: Bool = true
+    
+    var target: CustomPointAnnotation?
+    
+    var targetType = "other"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         navbar.delegate = self
 
         locationManager.delegate = self
@@ -70,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         recycle.imageName = "recycle.png"
 
-        recycle.coordinate = CLLocationCoordinate2D(latitude: 43.47, longitude: -80.54)
+        recycle.coordinate = CLLocationCoordinate2D(latitude: 43.4705, longitude: -80.54379)
 
         recycle.title = "Recycle"
 
@@ -82,7 +88,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         trash.imageName = "trash.png"
 
-        trash.coordinate = CLLocationCoordinate2D(latitude: 43.46, longitude: -80.55)
+        trash.coordinate = CLLocationCoordinate2D(latitude: 43.470548, longitude: -80.5438)
 
         trash.title = "Trash"
 
@@ -94,7 +100,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         compost.imageName = "compost.png"
 
-        compost.coordinate = CLLocationCoordinate2D(latitude: 43.464, longitude: -80.544)
+        compost.coordinate = CLLocationCoordinate2D(latitude: 43.47, longitude: -80.54)
 
         compost.title = "Compost"
 
@@ -106,41 +112,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         other.imageName = "other.png"
 
-        other.coordinate = CLLocationCoordinate2D(latitude: 43.466, longitude: -80.546)
+        other.coordinate = CLLocationCoordinate2D(latitude: 43.475, longitude: -80.538)
 
         other.title = "Special Disposal"
 
         otherView = MKPinAnnotationView(annotation: other, reuseIdentifier: "pin")
-
+        
         map.addAnnotation(otherView.annotation!)
 
         locationsArr.append(recycle)
         locationsArr.append(trash)
         locationsArr.append(compost)
         locationsArr.append(other)
-
-        //let distance = MKUserLocati
-
-        let request = MKDirectionsRequest()
-
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.203314, longitude: -8.410257), addressDictionary: nil))
-
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.112808, longitude: -8.498689), addressDictionary: nil))
-
-        request.requestsAlternateRoutes = false
-
-        request.transportType = .walking
-
-        let directions = MKDirections(request: request)
-
-        directions.calculate { [unowned self] response, error in
-            guard let unwrappedResponse = response else { return }
-
-            for route in unwrappedResponse.routes {
-                self.map.add(route.polyline)
-                self.map.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            }
+        
+        switch targetType {
+        case "recycle":
+            target = recycle
+        case "compost":
+            target = compost
+        case "trash":
+            target = trash
+        case "other":
+            target = other
+        default:
+            target = other
+            break
         }
+        
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -181,13 +179,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
+        
+        userLocation = locations[0]
+        
         if (trackLocation) {
-            userLocation = locations[0]
+            
+            let latitude = userLocation!.coordinate.latitude
 
-            let latitude = userLocation.coordinate.latitude
-
-            let longitude = userLocation.coordinate.longitude
+            let longitude = userLocation!.coordinate.longitude
 
             let latDelta: CLLocationDegrees = 0.000005
 
@@ -212,12 +211,46 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
             DispatchQueue.main.async(execute: {
 
-                self.displayDistance(location: self.recycle, user: self.userLocation)
-                self.displayDistance(location: self.trash, user: self.userLocation)
-                self.displayDistance(location: self.compost, user: self.userLocation)
-                self.displayDistance(location: self.other, user: self.userLocation)
+                self.displayDistance(location: self.recycle, user: self.userLocation!)
+                self.displayDistance(location: self.trash, user: self.userLocation!)
+                self.displayDistance(location: self.compost, user: self.userLocation!)
+                self.displayDistance(location: self.other, user: self.userLocation!)
 
             })
+            
+        }
+        
+        if firstUpdate {
+            
+            firstUpdate = false
+            
+            let request = MKDirectionsRequest()
+            
+            let placemark = MKPlacemark(coordinate: userLocation!.coordinate, addressDictionary: nil)
+            request.source = MKMapItem(placemark: placemark)
+            
+            request.destination = MKMapItem(placemark: MKPlacemark(coordinate: target!.coordinate, addressDictionary: nil))
+            
+            request.requestsAlternateRoutes = false
+            
+            request.transportType = .walking
+            
+            let directions = MKDirections(request: request)
+            
+            directions.calculate { [unowned self] response, error in
+                
+                guard let unwrappedResponse = response else { return }
+                
+                for route in unwrappedResponse.routes {
+                    
+                    self.map.add(route.polyline)
+                    
+                    self.map.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                    
+                }
+                
+            }
+            
         }
 
     }
