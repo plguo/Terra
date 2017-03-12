@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,10 +34,22 @@
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uaB-zs-Ppp">
                                 <rect key="frame" x="0.0" y="59" width="375" height="559"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="PLT-PY-k50"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-KM-6DN">
+                                <rect key="frame" x="319" y="570" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="GGg-Zd-ben"/>
+                                    <constraint firstAttribute="height" constant="40" id="i2F-zi-bMY"/>
+                                </constraints>
+                                <state key="normal" image="myLocation"/>
+                                <connections>
+                                    <action selector="locationButtonAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="VMM-7U-ukF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -46,16 +59,19 @@
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="uaB-zs-Ppp" secondAttribute="bottom" id="Qvg-sm-9Ap"/>
                             <constraint firstItem="t2g-0I-fQg" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="VP1-nG-Hju"/>
                             <constraint firstItem="t2g-0I-fQg" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ZNY-gT-Xlw"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="eR6-KM-6DN" secondAttribute="bottom" constant="8" id="qE8-Re-G3t"/>
+                            <constraint firstItem="eR6-KM-6DN" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="sYL-uF-UCv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="mapImage" selectedImage="mapImage" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="locationButton" destination="eR6-KM-6DN" id="hZ2-Ll-MeF"/>
                         <outlet property="map" destination="uaB-zs-Ppp" id="HMo-ib-jkg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="749.60000000000002" y="-321.58920539730138"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -140,6 +156,7 @@
         <image name="cameraImage" width="24" height="24"/>
         <image name="infoImage" width="24" height="24"/>
         <image name="mapImage" width="24" height="24"/>
+        <image name="myLocation" width="24" height="24"/>
         <image name="userImage" width="24" height="24"/>
     </resources>
 </document>

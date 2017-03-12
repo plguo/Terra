@@ -9,11 +9,17 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var locationButton: UIButton!
+    
     var locationManager = CLLocationManager()
     
+    var panGestureRecognizer : UIPanGestureRecognizer?
+    
+    var trackLocation = true
+    var firstLocationUpdate = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,28 +32,72 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         locationManager.startUpdatingLocation()
         
+        map.showsUserLocation = true
+        
+        var trashAnnotation = MKPointAnnotation()
+        
+        var location = CLLocationCoordinate2D(latitude: 43.5, longitude: -80.5)
+        
+        trashAnnotation.coordinate = location
+        
+        map.addAnnotation(trashAnnotation)
+        
+        map.showsUserLocation = true
+        
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didDragMap))
+        panGestureRecognizer?.delegate = self
+        map.addGestureRecognizer(panGestureRecognizer!)
+        
+        
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let userLocation: CLLocation = locations[0]
+        if (trackLocation) {
+            let userLocation: CLLocation = locations[0]
+            
+            let latitude = userLocation.coordinate.latitude
+            
+            let longitude = userLocation.coordinate.longitude
+            
+            let latDelta: CLLocationDegrees = 0.000005
+            
+            let lonDelta: CLLocationDegrees = 0.000005
+            
+            let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+            
+            let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
+            let region = MKCoordinateRegion(center: location, span: span)
+            
+            if (firstLocationUpdate) {
+                firstLocationUpdate = false
+                self.map.setRegion(region, animated: false)
+            } else {
+                self.map.setRegion(region, animated: true)
+            }
+            
+        }
         
-        let latitude = userLocation.coordinate.latitude
+    }
+    
+    @IBAction func locationButtonAction(_ sender: Any) {
         
-        let longitude = userLocation.coordinate.longitude
+        trackLocation = true
         
-        let latDelta: CLLocationDegrees = 0.05
+        locationButton.setImage(UIImage(named: "myLocation.png"), for: UIControlState.normal)
         
-        let lonDelta: CLLocationDegrees = 0.05
+    }
+    
+    func didDragMap(_ gestureRecognizer: UIGestureRecognizer) {
+        trackLocation = false
         
-        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
-        
-        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        
-        let region = MKCoordinateRegion(center: location, span: span)
-        
-        self.map.setRegion(region, animated: true)
-        
+        locationButton.setImage(UIImage(named: "panMode.png"), for: UIControlState.normal)
     }
     
     override func didReceiveMemoryWarning() {
