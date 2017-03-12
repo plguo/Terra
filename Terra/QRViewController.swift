@@ -2,7 +2,7 @@
 //  QRViewController.swift
 //  Terra
 //
-//  Created by Edward Guo on 2017-03-11.
+//  Created by Terra Team on 2017-03-11.
 //  Copyright © 2017 Terra Inc. All rights reserved.
 //
 
@@ -29,7 +29,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
     func startCameraSession(){
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter.
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -101,5 +101,4 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             }
         }
     }
-    
 }
