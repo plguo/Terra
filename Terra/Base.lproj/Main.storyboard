@@ -42,10 +42,10 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-KM-6DN">
-                                <rect key="frame" x="319" y="79" width="40" height="40"/>
+                                <rect key="frame" x="24" y="598" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="GGg-Zd-ben"/>
-                                    <constraint firstAttribute="height" constant="40" id="i2F-zi-bMY"/>
+                                    <constraint firstAttribute="height" constant="24" id="e8J-nZ-NtM"/>
+                                    <constraint firstAttribute="width" constant="24" id="tB0-aL-JGi"/>
                                 </constraints>
                                 <state key="normal" image="myLocation"/>
                                 <connections>
@@ -78,7 +78,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <exit id="4mV-vE-ccN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="381.60000000000002" y="-322.48875562218893"/>
+            <point key="canvasLocation" x="1414" y="456"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="wg7-f3-ORb">
