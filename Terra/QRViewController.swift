@@ -14,11 +14,14 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
+    var cameraView:UIView?
     
     @IBOutlet weak var messageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setNeedsStatusBarAppearanceUpdate()
         
         startCameraSession()
         addQrCodeFrameView()
@@ -54,8 +57,15 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-            videoPreviewLayer?.frame = view.layer.bounds
-            view.layer.addSublayer(videoPreviewLayer!)
+            
+            let screenSize = UIScreen.main.bounds.size
+            
+            cameraView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
+            videoPreviewLayer?.frame = cameraView!.layer.bounds
+            cameraView!.layer.addSublayer(videoPreviewLayer!)
+            
+            view.addSubview(cameraView!)
+            view.sendSubview(toBack: cameraView!)
             
             // Start video capture.
             captureSession?.startRunning()
@@ -99,6 +109,12 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
             }
+        }
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        get {
+            return .lightContent
         }
     }
 }
