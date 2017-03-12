@@ -22,6 +22,8 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     let stillImageOutput = AVCaptureStillImageOutput()
     var uploader : ImageUploader?
     
+    let wiki = TerraWiki()
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var captureButton: UIButton!
     
@@ -66,6 +68,8 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         blurView.isHidden = true
         activityIndicator.isHidden = true
+        
+        wiki.fetchIndex()
     }
     
     override func didReceiveMemoryWarning() {
@@ -181,13 +185,22 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     
     func identifiedLables(_ lables: [LabelInfo]) {
         if (lables.count > 0) {
-            blurView!.isHidden = false
-            messageLabel!.text = lables[0].name
+            let firstLabel = lables.first!.name
+            wiki.fetchProduct(lables) { [weak self] (labelName, category) in
+                let productName = labelName ?? firstLabel
+                self?.messageLabel.text = "\(productName) / \(category)"
+                
+                self?.blurView.isHidden = false
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden  = true
+                self?.captureButton.isHidden = false
+            }
+        } else {
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden  = true
+            captureButton.isHidden = false
         }
         
-        activityIndicator.stopAnimating()
-        activityIndicator.isHidden  = true
-        captureButton.isHidden = false
     }
     
     @IBAction func unwindToCamera(unwindSegue: UIStoryboardSegue) {
