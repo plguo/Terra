@@ -8,5 +8,7 @@ target 'Terra' do
   # Pods for Terra
   pod 'Alamofire', '~> 4.4'
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
 
 end
