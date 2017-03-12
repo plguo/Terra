@@ -132,7 +132,7 @@
 				TargetAttributes = {
 					966946401E744E1E00D3FFAC = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 59WRPHFTBH;
+						DevelopmentTeam = 542G63KDTW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -351,7 +351,7 @@
 				DEVELOPMENT_TEAM = 59WRPHFTBH;
 				INFOPLIST_FILE = Terra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.plguo.Terra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silastsui.Terra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -366,7 +366,7 @@
 				DEVELOPMENT_TEAM = 59WRPHFTBH;
 				INFOPLIST_FILE = Terra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.plguo.Terra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silastsui.Terra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
