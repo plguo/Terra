@@ -18,9 +18,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var locationManager = CLLocationManager()
     
-    var panGestureRecognizer : UIPanGestureRecognizer?
+    var panGestureRecognizer: UIPanGestureRecognizer?
     
     var trackLocation = true
+    
     var firstLocationUpdate = true
     
     override func viewDidLoad() {
@@ -47,7 +48,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         map.showsUserLocation = true
         
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didDragMap))
+        
         panGestureRecognizer?.delegate = self
+        
         map.addGestureRecognizer(panGestureRecognizer!)
         
         navbar.delegate = self
