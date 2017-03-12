@@ -99,6 +99,7 @@ class ImageUploader{
         }
         
         tags.sort()
+        tags.reverse()
         DispatchQueue.main.async {
             self.delegate?.identifiedLables(tags)
         }
@@ -107,7 +108,7 @@ class ImageUploader{
     func handleLabels(_ labels: [NSDictionary]) -> [LabelInfo] {
         var tags = [LabelInfo]()
         for label in labels {
-            let score = Double(label["description"] as! String) ?? 0.0
+            let score = (label["score"] as? NSNumber)?.doubleValue ?? 0.0
             let labelInfo = LabelInfo(name: (label["description"] as! String), score: score)
             tags.append(labelInfo)
         }
