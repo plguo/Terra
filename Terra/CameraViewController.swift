@@ -23,6 +23,7 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     var uploader : ImageUploader?
     
     let wiki = TerraWiki()
+    let binWiki = ClassifyWaste()
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var captureButton: UIButton!
@@ -57,7 +58,7 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         view.addSubview(blurView)
         let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[blur(==50)]", options: [], metrics: nil, views: ["blur" : blurView])
-        let horizontalContraint = NSLayoutConstraint(item: blurView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        let horizontalContraint = NSLayoutConstraint(item: blurView, attribute: .width, relatedBy: .equal, toItem: messageLabel, attribute: .width, multiplier: 1.0, constant: 30.0)
         let centerConstraint = NSLayoutConstraint(item: blurView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         view.addConstraints(verticalConstraints)
         view.addConstraint(horizontalContraint)
@@ -188,12 +189,7 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             let firstLabel = lables.first!.name
             wiki.fetchProduct(lables) { [weak self] (labelName, category) in
                 let productName = labelName ?? firstLabel
-                self?.messageLabel.text = "\(productName) / \(category)"
-                
-                self?.blurView.isHidden = false
-                self?.activityIndicator.stopAnimating()
-                self?.activityIndicator.isHidden  = true
-                self?.captureButton.isHidden = false
+                self?.identifyBin(category, "waterloo", productName)
             }
         } else {
             activityIndicator.stopAnimating()
@@ -203,7 +199,21 @@ class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
     }
     
+    func identifyBin(_ material: String,_ region: String, _ productName: String){
+        binWiki.fetchBinType(material, region: region) { [weak self] (binType0) in
+            
+            let binType = binType0 == "undefined" ? "garbage" : binType0
+            self?.messageLabel.text = "\(productName) / \(binType)"
+            
+            self?.blurView.isHidden = false
+            self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.isHidden  = true
+            self?.captureButton.isHidden = false
+        }
+    }
+    
     @IBAction func unwindToCamera(unwindSegue: UIStoryboardSegue) {
         // Some code
     }
 }
+

@@ -34,6 +34,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         locationManager.startUpdatingLocation()
         
+        self.navbar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!]
+        
         map.showsUserLocation = true
         
         var trashAnnotation = MKPointAnnotation()

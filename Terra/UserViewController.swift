@@ -13,6 +13,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UITableView
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var screenEdgeRecognizer: UIScreenEdgePanGestureRecognizer!
+    
     let rewards = [
         ["AAA Battery", "+1"],
         ["Bottled Water", "+2"],
@@ -23,15 +25,17 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UITableView
         super.viewDidLoad()
 
         navbar.delegate = self
+        self.navbar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!]
         
         tableView.dataSource = self
         tableView.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
+    }    
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
