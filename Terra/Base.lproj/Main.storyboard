@@ -165,14 +165,14 @@
                                 <color key="backgroundColor" cyan="0.0" magenta="0.0" yellow="0.0" black="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-nf-8W7">
-                                <rect key="frame" x="16" y="410" width="120" height="21"/>
+                                <rect key="frame" x="16" y="406" width="120" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Redeem" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1w-WH-jrh">
-                                <rect key="frame" x="239" y="406" width="120" height="28"/>
+                                <rect key="frame" x="239" y="405" width="120" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -267,7 +267,7 @@
     </scenes>
     <resources>
         <image name="cameraImage" width="24" height="24"/>
-        <image name="dialImage" width="750" height="750"/>
+        <image name="dialImage" width="375" height="375"/>
         <image name="infoImage" width="24" height="24"/>
         <image name="mapImage" width="24" height="24"/>
         <image name="myLocation" width="24" height="24"/>
