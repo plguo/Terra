@@ -21,6 +21,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     var locationManager = CLLocationManager()
 
+    var userLocation: CLLocation!
+
     var panGestureRecognizer: UIPanGestureRecognizer?
 
     var trackLocation = true
@@ -94,6 +96,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         compost.coordinate = CLLocationCoordinate2D(latitude: 43.464, longitude: -80.544)
 
+        compost.title = "Compost"
+
         compostView = MKPinAnnotationView(annotation: compost, reuseIdentifier: "pin")
 
         map.addAnnotation(compostView.annotation!)
@@ -103,6 +107,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         other.imageName = "other.png"
 
         other.coordinate = CLLocationCoordinate2D(latitude: 43.466, longitude: -80.546)
+
+        other.title = "Special Disposal"
 
         otherView = MKPinAnnotationView(annotation: other, reuseIdentifier: "pin")
 
@@ -114,6 +120,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationsArr.append(other)
 
         //let distance = MKUserLocati
+
+        let request = MKDirectionsRequest()
+
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.203314, longitude: -8.410257), addressDictionary: nil))
+
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.112808, longitude: -8.498689), addressDictionary: nil))
+
+        request.requestsAlternateRoutes = false
+
+        request.transportType = .walking
+
+        let directions = MKDirections(request: request)
+
+        directions.calculate { [unowned self] response, error in
+            guard let unwrappedResponse = response else { return }
+
+            for route in unwrappedResponse.routes {
+                self.map.add(route.polyline)
+                self.map.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+            }
+        }
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -156,8 +183,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         if (trackLocation) {
-
-            let userLocation: CLLocation = locations[0]
+            userLocation = locations[0]
 
             let latitude = userLocation.coordinate.latitude
 
@@ -184,6 +210,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.map.setRegion(region, animated: true)
             }
 
+            DispatchQueue.main.async(execute: {
+
+                self.displayDistance(location: self.recycle, user: self.userLocation)
+                self.displayDistance(location: self.trash, user: self.userLocation)
+                self.displayDistance(location: self.compost, user: self.userLocation)
+                self.displayDistance(location: self.other, user: self.userLocation)
+
+            })
         }
 
     }
@@ -204,9 +238,51 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     }
 
+    func getDistanceKM(lat1: Float,lon1: Float,lat2: Float,lon2: Float) -> Float {
+
+        let R: Float = 6371.0; // Radius of the earth in km
+
+        let dLat: Float = deg2rad(deg: lat2 - lat1)  // deg2rad below
+
+        let dLon: Float = deg2rad(deg: lon2 - lon1)
+
+        let a: Float = sin(dLat/2.0) * sin(dLat/2.0) + cos(deg2rad(deg: lat1)) * cos(deg2rad(deg: lat2)) * sin(dLon/2.0) * sin(dLon/2.0)
+
+        let c: Float = 2 * atan2(sqrt(a), sqrt(1-a));
+
+        return R * c * 1000.0// Distance in m
+
+    }
+
+    func deg2rad(deg: Float) -> Float {
+
+        return deg * (3.141592654 / 180.0)
+
+    }
+
+    func displayDistance(location: CustomPointAnnotation, user: CLLocation) {
+
+        location.subtitle = "\(Int(round(getDistanceKM(lat1: Float(location.coordinate.latitude), lon1: Float(location.coordinate.longitude), lat2: Float(user.coordinate.latitude), lon2: Float(user.coordinate.longitude))))) m"
+
+    }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+
+        polylineRenderer.strokeColor = UIColor.blue
+
+        polylineRenderer.fillColor = UIColor.red
+
+        polylineRenderer.lineWidth = 2
+
+        return polylineRenderer
+
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
     func position(for bar: UIBarPositioning) -> UIBarPosition {
